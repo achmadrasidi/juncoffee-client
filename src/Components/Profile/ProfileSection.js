@@ -95,7 +95,15 @@ const ProfileSection = () => {
 
   return (
     <>
-      <Message show={show} onHide={() => setShow(false)} message={message} error={error.message} />
+      <Message
+        show={show}
+        onHide={() => {
+          setShow(false);
+          window.scrollTo({ behavior: "smooth", top: "0px" });
+        }}
+        message={message}
+        error={error.message}
+      />
       {loading || load ? <Loading show={true} onHide={false} /> : <></>}
       <section className="user-profile">
         <div className="container-fluid">
