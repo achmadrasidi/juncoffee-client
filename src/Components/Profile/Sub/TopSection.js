@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const TopSection = ({ handleInputChange, handleFoto, fileUrl, error }) => {
   const { data } = useSelector((state) => state.getProfile);
 
-  const profileImage = data && data.image ? `${process.env.REACT_APP_API}${data.image}` : require("../../../assets/img/default-img.webp");
+  const profileImage = data && data.image ? data.image : require("../../../assets/img/default-img.webp");
   return (
     <div className="row my-4" id="user-contact-res">
       <div className="col-md-3">
