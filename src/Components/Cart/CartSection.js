@@ -20,7 +20,7 @@ const CartSection = () => {
   useEffect(() => {
     setAddress(userDetail.address);
     setPhone(userDetail.phone_number);
-    if (message) {
+    if (message || !item.length) {
       setshipping(0);
       setTax(0);
       setTotalPrice(0);
