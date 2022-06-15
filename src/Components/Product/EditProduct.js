@@ -51,10 +51,10 @@ const EditProduct = () => {
   const updateHandler = () => {
     const body = {
       name,
-      price,
+      price: Number(price),
       description,
-      stock,
-      category_id: category,
+      stock: Number(stock),
+      category_id: Number(category),
     };
     axios
       .patch(`${process.env.REACT_APP_API}/product/${id}`, body, { headers: { Authorization: `Bearer ${token}` } })
