@@ -13,10 +13,10 @@ const EditProduct = () => {
   const [message, setMessage] = useState(null);
   const [showMessage, setShowMessage] = useState(null);
   const [name, setName] = useState("");
-  const [stock, setStock] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [stock, setStock] = useState("");
+  const [price, setPrice] = useState("");
   const [description, setDesc] = useState("");
-  const [category, setCategory] = useState(0);
+  const [category, setCategory] = useState("");
   const { id } = useParams();
 
   const { token } = useSelector((state) => state.persist.userInfo.info);
@@ -51,10 +51,10 @@ const EditProduct = () => {
   const updateHandler = () => {
     const body = {
       name,
-      price: Number(price),
+      price,
       description,
-      stock: Number(stock),
-      category_id: Number(category),
+      stock,
+      category_id: category,
     };
     axios
       .patch(`${process.env.REACT_APP_API}/product/${id}`, body, { headers: { Authorization: `Bearer ${token}` } })
