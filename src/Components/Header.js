@@ -175,7 +175,7 @@ const Header = () => {
               )}
 
               <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popover}>
-                <img src={image && image !== null ? `${process.env.REACT_APP_API}${image}` : require("../assets/img/default-img.webp")} className="ms-3 welcome-name welcome-name-res" alt="" />
+                <img src={image && image !== null ? image : require("../assets/img/default-img.webp")} className="ms-3 welcome-name welcome-name-res" alt="" />
               </OverlayTrigger>
             </div>
           </Navbar.Collapse>
