@@ -51,9 +51,9 @@ const EditProduct = () => {
   const updateHandler = () => {
     const body = {
       name,
-      price,
+      price: price ? price : product.price.toString(),
       description,
-      stock,
+      stock: stock ? stock : product.stock.toString(),
       category_id: category.toString(),
     };
     axios
@@ -74,8 +74,7 @@ const EditProduct = () => {
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
-          window.location.reload();
-          window.scrollTo({ behavior: "smooth", top: "0px" });
+          navigate(`/product/${id}`);
         }}
         message={message}
         error={error}
