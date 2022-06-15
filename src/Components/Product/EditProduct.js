@@ -54,7 +54,7 @@ const EditProduct = () => {
       price,
       description,
       stock,
-      category_id: category,
+      category_id: category.toString(),
     };
     axios
       .patch(`${process.env.REACT_APP_API}/product/${id}`, body, { headers: { Authorization: `Bearer ${token}` } })
