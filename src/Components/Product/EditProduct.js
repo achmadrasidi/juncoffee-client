@@ -13,10 +13,10 @@ const EditProduct = () => {
   const [message, setMessage] = useState(null);
   const [showMessage, setShowMessage] = useState(null);
   const [name, setName] = useState("");
-  const [stock, setStock] = useState("");
-  const [price, setPrice] = useState(null);
+  const [stock, setStock] = useState(0);
+  const [price, setPrice] = useState(0);
   const [description, setDesc] = useState("");
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState(0);
   const { id } = useParams();
 
   const { token } = useSelector((state) => state.persist.userInfo.info);
