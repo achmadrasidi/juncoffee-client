@@ -208,7 +208,7 @@ const ShopDetailAdmin = () => {
                         <div className="row text-center">
                           <div className="col-md-6">
                             {" "}
-                            <img src={`${process.env.REACT_APP_API}${product.image}`} className="bottom-image" alt="" />
+                            <img src={product.image} className="bottom-image" alt="" />
                           </div>
                           <div className="col-md-6">
                             {" "}
