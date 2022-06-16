@@ -31,7 +31,7 @@ const Favorite = () => {
               {data.map((product, i) => (
                 <div className="col-md-4 card-cols" key={i}>
                   <div className="card card-layout" onClick={() => navigate(`/product/${product.id}`, { replace: true })}>
-                    <img src={`${process.env.REACT_APP_API}${product.image}`} className="card-img-top" id="card-img-top-res" alt="hazelnut-img" />
+                    <img src={product.image} className="card-img-top" id="card-img-top-res" alt="hazelnut-img" />
                     <div className="card-body">
                       <h3 className="card-title">{product.name}</h3>
                     </div>
