@@ -58,13 +58,11 @@ const Login = () => {
         setErrorMsg(null);
         setShowMessage(true);
         setMessage(state.message);
-        delete state.message;
-        return;
+        return delete state.message;
       }
       (() => {
         window.history.replaceState({}, { ...state });
-        delete state.token;
-        delete state.message;
+        return delete state.token;
       })();
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
