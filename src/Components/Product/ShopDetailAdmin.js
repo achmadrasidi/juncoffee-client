@@ -76,7 +76,7 @@ const ShopDetailAdmin = () => {
                 <p className="top-text-left mb-5" onClick={() => navigate("/product", { replace: true })}>
                   Favorite &amp; Promo <span className="product-text-left">&#8594; {product.name}</span>{" "}
                 </p>
-                <img src={`${process.env.REACT_APP_API}${product.image}`} alt="" className=" my-3 justify-content-center" width={"60%"} />
+                <img src={product.image} alt="" className=" my-3 justify-content-center" width={"60%"} />
                 <img src={require("../../assets/img/delete-icon.png")} className="delete-icon-back" alt="" />
                 <div className="card text-start delivery-time-card">
                   <div className="card-body mx-3 delivery-time-card-res">

@@ -93,7 +93,7 @@ const ItemsAdmin = ({ category, favorite, pageUrl, setPageUrl }) => {
               <div className="col-md-3 my-5" key={i}>
                 <div className="card card-fav-product-admin-layout h-100">
                   <div className="card-body text-center d-grid" id="card-body-res">
-                    <img src={`${process.env.REACT_APP_API}${product.image}`} className="product-card-image" alt="" />
+                    <img src={product.image} className="product-card-image" alt="" />
                     <h2
                       className="fav-product-title"
                       onClick={() => {
