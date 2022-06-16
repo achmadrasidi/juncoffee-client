@@ -22,10 +22,8 @@ const Login = () => {
   const { errorConfirm, confirmMessage } = useSelector((st) => st.userConfirm);
   const { logoutMessage } = useSelector((st) => st.userLogout);
   const { registerMessage } = useSelector((st) => st.userRegist);
-
   useEffect(() => {
     document.title = "Juncoffee - Login";
-
     setErrorMsg(null);
     setMessage(null);
     if (errorLogin) {
@@ -58,12 +56,9 @@ const Login = () => {
         setErrorMsg(null);
         setShowMessage(true);
         setMessage(state.message);
-        return delete state.message;
+        return;
       }
-      (() => {
-        window.history.replaceState({}, { ...state });
-        return delete state.token;
-      })();
+      window.history.replaceState({ ...state.message }, "");
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
 
@@ -100,6 +95,7 @@ const Login = () => {
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
+          window.history.replaceState({ ...state.message }, "");
         }}
         message={message}
         error={errorMsg}

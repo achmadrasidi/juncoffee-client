@@ -6,7 +6,7 @@ export const ProtectedRoutes = ({ children }) => {
   const { isLoggedIn } = useSelector((state) => state.persist.userInfo);
 
   if (!isLoggedIn) {
-    return <Navigate to="/auth/login" replace state={{ message: "Please Login First" }} />;
+    return <Navigate to="/auth/login" replace={true} state={{ message: "Please Login First" }} />;
   }
   return children;
 };
