@@ -100,7 +100,7 @@ const Items = ({ category, favorite, pageUrl, setPageUrl }) => {
                   }}
                 >
                   <div className="card-body text-center d-grid" id="card-body-res">
-                    <img src={`${process.env.REACT_APP_API}${product.image}`} className="product-card-image" alt="" />
+                    <img src={product.image} className="product-card-image" alt="" />
                     <h2 className="fav-product-title">{product.name}</h2>
                     <p className="fav-product-price">IDR{formatter.format(product.price).split("Rp")[1]}</p>
                   </div>

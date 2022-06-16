@@ -56,7 +56,7 @@ const HistoryItem = ({ changeHandler, checkedAll, showDelete }) => {
                     <Collapse in={open[itm.transaction_id]}>
                       <div className="row" id="item-collapse">
                         <div className="col-md-3">
-                          <img src={`${process.env.REACT_APP_API}${itm.image}`} width="155" height="155" alt="" />
+                          <img src={itm.image} width="155" height="155" alt="" />
                         </div>
                         <div className="col-md-9">
                           <h2 className="card-history-title mt-3 fw-bolder">{itm.product_name}</h2>

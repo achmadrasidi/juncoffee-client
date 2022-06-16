@@ -38,7 +38,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
           <div className="row mt-3 cart-row-border pb-4 ps-0">
             <div className="col-md-3 cart-row-col">
               <CloseButton value={obj.id} onClick={(e) => removeCartHandler(e)} />
-              <img src={`${process.env.REACT_APP_API}${obj.image}`} width="100%" alt="" className="image-cart-product" />
+              <img src={obj.image} width="100%" alt="" className="image-cart-product" />
             </div>
             <div className="col-md-6 ">
               <p className="cart-product-text m-0">{obj.name}</p>
