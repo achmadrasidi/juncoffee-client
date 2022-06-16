@@ -64,6 +64,7 @@ const Login = () => {
       (() => {
         window.history.replaceState({}, { ...state });
         delete state.token;
+        delete state.message;
       })();
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
