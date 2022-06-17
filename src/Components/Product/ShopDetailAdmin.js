@@ -31,6 +31,7 @@ const ShopDetailAdmin = () => {
   };
 
   const deleteConfirm = () => {
+    setShowPrompt(false);
     axios
       .delete(`${process.env.REACT_APP_API}/product/${product.id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
