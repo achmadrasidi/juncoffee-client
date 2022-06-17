@@ -183,7 +183,7 @@ const AddProduct = () => {
               <h2 className="top-product-desc-add mt-5">Input Category :</h2>
               <p class="product-size-add mt-2 border-0">Click category for this product</p>
               <button
-                className={category === 2 ? "product-add-cat-active mx-4" : "product-add-cat mx-4"}
+                className={category === 2 ? "product-add-cat-active me-4" : "product-add-cat me-4"}
                 onClick={() => {
                   setCategory(2);
                 }}
