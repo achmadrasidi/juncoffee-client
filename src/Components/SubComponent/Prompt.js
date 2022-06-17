@@ -19,4 +19,19 @@ const Prompt = ({ show, confirm, message, cancel }) => {
   );
 };
 
+export const AddProdPrompt = ({ show, confirm, cancel }) => {
+  return (
+    <Modal show={show} onHide={cancel} backdrop="static" keyboard={true}>
+      <Modal.Body className="text-center">
+        <Button variant="success" className="me-3" onClick={confirm}>
+          Add more Product
+        </Button>
+        <Button variant="danger" onClick={cancel}>
+          Done
+        </Button>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
 export default Prompt;

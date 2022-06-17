@@ -92,7 +92,7 @@ const AddPromo = () => {
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
-          window.location.reload();
+          navigate("/product");
         }}
         message={message}
         error={error}

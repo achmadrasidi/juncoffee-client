@@ -50,7 +50,7 @@ const ShopAdmin = () => {
                         <div className="card-body">
                           <img src={require("../../assets/img/pencil.png")} className="pencil-style-promo" width={25} height={25} onClick={() => navigate(`/product/edit-promo/${promo.id}`)} />
                           <div className="row justify-content-center">
-                            <img src={promo.image ? `${process.env.REACT_APP_API}${promo.image}` : require("../../assets/img/promo-product-image.png")} className="promo-food-img " alt="" />
+                            <img src={promo.image ? promo.image : require("../../assets/img/promo-product-image.png")} className="promo-food-img " alt="" />
                             <h2 className="product-promo-card-title">{promo.name}</h2>
                             <p className="product-promo-card-desc mt-2">{promo.description}</p>
                           </div>

@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
 import Message from "../SubComponent/Message";
+import { AddProdPrompt } from "../SubComponent/Prompt";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
+  const [id, setId] = useState("");
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
   const [error, setError] = useState("");
   const [file, setFile] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
@@ -70,6 +73,7 @@ const AddProduct = () => {
       .post(`${process.env.REACT_APP_API}/product`, formData, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } })
       .then((result) => {
         setMessage(result.data.message);
+        setId(result.data.data.id);
         setShowMessage(true);
       })
       .catch((err) => {
@@ -80,12 +84,12 @@ const AddProduct = () => {
 
   return (
     <>
+      <AddProdPrompt show={showPrompt} confirm={() => setShowPrompt(false)} cancel={() => navigate(`/product/${id}`)} />
       <Message
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
-          window.location.reload();
-          window.scrollTo({ behavior: "smooth", top: "0" });
+          setShowPrompt(true);
         }}
         message={message}
         error={error}

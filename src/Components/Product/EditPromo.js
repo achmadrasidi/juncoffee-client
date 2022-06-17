@@ -157,7 +157,7 @@ const EditPromo = () => {
                                   {fileUrl && !error ? (
                                     <img src={fileUrl} ref={ref} width={200} height={200} className="promo-food-img-edit" alt="preview" />
                                   ) : (
-                                    <img src={promo.image ? `${process.env.REACT_APP_API}${promo.image}` : require("../../assets/img/promo-product-image.png")} className="promo-food-img-edit " alt="" />
+                                    <img src={promo.image ? promo.image : require("../../assets/img/promo-product-image.png")} className="promo-food-img-edit " alt="" />
                                   )}
                                 </label>
                                 <input type="file" name="foto" id="foto" onChange={handleFoto} hidden></input>
