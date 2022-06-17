@@ -74,7 +74,7 @@ const AddProduct = () => {
       .then((result) => {
         setMessage(result.data.message);
         setId(result.data.data.id);
-        setShowMessage(true);
+        setShowPrompt(true);
       })
       .catch((err) => {
         setError(err.response ? err.response.data.error : err.message);
@@ -84,7 +84,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <AddProdPrompt show={showPrompt} confirm={() => setShowPrompt(false)} cancel={() => navigate(`/product/${id}`)} />
+      <AddProdPrompt show={showPrompt} message={message} confirm={() => setShowPrompt(false)} cancel={() => navigate(`/product/${id}`)} />
       <Message
         show={showMessage}
         onHide={() => {
