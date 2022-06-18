@@ -2820,3 +2820,21 @@ input[name="delete"] {
 
   color: #6a4029;
 }
+.upcoming-button-back {
+  background: #6a4029;
+  border-radius: 20px;
+  height: 74px;
+  width: 100%;
+  border: none;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: white;
+}
