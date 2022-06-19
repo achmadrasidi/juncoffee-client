@@ -9,7 +9,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
   const [showModalConfirm, setShowModalConfirm] = useState(false);
   const [cartDelItem, setCartDel] = useState([]);
   const dispatch = useDispatch();
-
+  const formatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 });
   const removeCartHandler = (e) => {
     const delItem = item.filter((val) => val.id !== e.target.value);
     setCartDel(delItem);
@@ -40,22 +40,25 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
               <CloseButton value={obj.id} onClick={(e) => removeCartHandler(e)} />
               <img src={obj.image} width="100%" alt="" className="image-cart-product" />
             </div>
-            <div className="col-md-6 ">
+            <div className="col-md-9 ">
               <p className="cart-product-text m-0">{obj.name}</p>
               {obj.variant ? (
                 obj.variant.map((val) => (
                   <>
-                    <p className="cart-product-text m-0">x{val.quantity}</p>
-                    <p className="cart-product-text m-0">{val.size}</p>
-                    {/* <p className="cart-product-text m-0">IDR {val.prodPrice * val.quantity}</p> */}
+                    <div class="row p-0">
+                      <div class="col-md-6">
+                        <p className="cart-product-text m-0">x{val.quantity}</p>
+                        <p className="cart-product-text m-0">{val.size}</p>
+                      </div>
+                      <div class="col-md-5 ms-3">
+                        <p className="cart-product-text m-0">IDR{formatter.format(val.prodPrice * val.quantity).split("Rp")[1]}</p>
+                      </div>
+                    </div>
                   </>
                 ))
               ) : (
                 <></>
               )}
-            </div>
-            <div className="col-md-3">
-              <p className="cart-product-text">IDR {obj.variant.map((val) => val.prodPrice * val.quantity).reduce((b, a) => a + b)}</p>
             </div>
           </div>
         ))
@@ -69,7 +72,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
             </div>
             <div className="col-md-6">
               {" "}
-              <p className="cart-price-text text-center m-0">IDR {subtotal}</p>
+              <p className="cart-price-text text-center m-0">IDR{formatter.format(subtotal).split("Rp")[1]}</p>
             </div>
           </div>
           <div className="row">
@@ -79,7 +82,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
             </div>
             <div className="col-md-6 ">
               {" "}
-              <p className="cart-price-text text-center m-0">IDR {tax}</p>
+              <p className="cart-price-text text-center m-0">IDR{formatter.format(tax).split("Rp")[1]}</p>
             </div>
           </div>
           <div className="row">
@@ -89,7 +92,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
             </div>
             <div className="col-md-6">
               {" "}
-              <p className="cart-price-text text-center m-0">IDR {shipping}</p>
+              <p className="cart-price-text text-center m-0">IDR{formatter.format(shipping).split("Rp")[1]}</p>
             </div>
           </div>
         </div>
@@ -99,7 +102,7 @@ const CartItems = ({ item, subtotal, tax, shipping, totalPrice }) => {
           <p className="cart-total-price">TOTAL</p>
         </div>
         <div className="col-md-6">
-          <p className="cart-total-price">IDR {totalPrice}</p>
+          <p className="cart-total-price text-center">IDR{formatter.format(totalPrice).split("Rp")[1]}</p>
         </div>
       </div>
     </>

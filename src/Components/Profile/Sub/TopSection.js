@@ -44,18 +44,18 @@ const TopSection = ({ handleInputChange, handleFoto, fileUrl, error }) => {
             <div className="row mt-4 ps-3 gap-5" id="row-email-phone-card">
               <div className="col-md-6">
                 <h2 className="user-contact-title">Email Address :</h2>
-                <input type="text" className="user-contact-text" defaultValue={data && data.email} name="email" placeholder="Email Address" disabled />
+                <input type="text" className="user-contact-text-top" defaultValue={data && data.email} name="email" placeholder="Email Address" disabled />
               </div>
               <div className="col-md-5">
                 <h2 className="user-contact-title">Mobile number :</h2>
-                <input type="text" className="user-contact-text" defaultValue={data && data.phone_number} onChange={handleInputChange} name="phone_number" placeholder="Phone Number" />
+                <input type="text" className="user-contact-text-top" defaultValue={data && data.phone_number} onChange={handleInputChange} name="phone_number" placeholder="Phone Number" />
                 {error && error.phone_number ? <p className="text-danger fw-bold fs-6">{error.phone_number}</p> : <></>}
               </div>
             </div>
             <div className="row mt-3 ps-3" id="delivery-res">
               <div className="col-md-6">
                 <h2 className="user-contact-title">Delivery Address :</h2>
-                <textarea className="user-contact-text" name="address" defaultValue={data && data.address} onChange={handleInputChange} placeholder="Delivery Address"></textarea>
+                <textarea className="user-contact-text-top" name="address" defaultValue={data && data.address} onChange={handleInputChange} placeholder="Delivery Address"></textarea>
               </div>
             </div>
           </div>

@@ -13,7 +13,8 @@ const ForgotPass = () => {
   const [error, setError] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showEditPass, setShowEditPass] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConPassword, setShowConPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -78,7 +79,7 @@ const ForgotPass = () => {
           <Modal.Body>
             <label htmlFor="password">Enter New Password</label>
             <input
-              type={showPassword ? "text" : "password"}
+              type={showNewPassword ? "text" : "password"}
               className="user-contact-text"
               name="password"
               onChange={(e) => {
@@ -86,10 +87,10 @@ const ForgotPass = () => {
                 setNewPassword(e.target.value);
               }}
             ></input>
-            <span>{showPassword ? <EyeSlash size={30} className="eye-icon-prof" onClick={() => setShowPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-prof" onClick={() => setShowPassword(true)}></Eye>}</span>
+            <span>{showNewPassword ? <EyeSlash size={30} className="eye-icon-prof" onClick={() => setShowNewPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-prof" onClick={() => setShowNewPassword(true)}></Eye>}</span>
             <label htmlFor="password">Confirm New Password</label>
             <input
-              type={showPassword ? "text" : "password"}
+              type={showConPassword ? "text" : "password"}
               className="user-contact-text"
               name="password"
               onChange={(e) => {
@@ -97,7 +98,7 @@ const ForgotPass = () => {
                 setConfirmPassword(e.target.value);
               }}
             ></input>
-            <span>{showPassword ? <EyeSlash size={30} className="eye-icon-prof" onClick={() => setShowPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-prof" onClick={() => setShowPassword(true)}></Eye>}</span>
+            <span>{showConPassword ? <EyeSlash size={30} className="eye-icon-prof" onClick={() => setShowConPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-prof" onClick={() => setShowConPassword(true)}></Eye>}</span>
             {error ? <p className="text-danger fw-bold fs-6">{error}</p> : <></>}
           </Modal.Body>
         </Modal.Header>

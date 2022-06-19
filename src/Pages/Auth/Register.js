@@ -95,7 +95,7 @@ export const Register = () => {
                 }}
                 required
               />
-              <span>{showPassword ? <EyeSlash size={30} className="eye-icon" onClick={() => setShowPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon" onClick={() => setShowPassword(true)}></Eye>}</span>
+              {showPassword ? <EyeSlash size={30} className="eye-icon-reg" onClick={() => setShowPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-reg" onClick={() => setShowPassword(true)}></Eye>}
               <label htmlFor="phone_number">Phone Number :</label>
               <input
                 type="text"
