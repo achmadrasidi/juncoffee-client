@@ -76,18 +76,6 @@ const Shop = () => {
                 </div>
               </>
             )}
-            <div className="row justify-content-center apply-coupon" id="apply-coupon-res">
-              <button className="apply-coupon-button">Apply Coupon</button>
-            </div>
-            <div className="row text-start tnc" id="tnc-res">
-              <h5 className="tnc-title">Terms and Condition</h5>
-              <ol className="tnc-items mt-3">
-                <li>You can only apply 1 coupon per day</li>
-                <li className="mt-3">It only for dine in</li>
-                <li className="mt-3">Buy 1 get 1 only for new user</li>
-                <li className="mt-3">Should make member card to apply coupon</li>
-              </ol>
-            </div>
           </div>
 
           <div className="col-md-8">
