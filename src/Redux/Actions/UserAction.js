@@ -7,6 +7,9 @@ import {
   USER_CONFIRMATION_FAIL,
   USER_CONFIRMATION_REQUEST,
   USER_CONFIRMATION_SUCCESS,
+  USER_FORGOT_PASS_FAIL,
+  USER_FORGOT_PASS_REQUEST,
+  USER_FORGOT_PASS_SUCCESS,
   USER_HISTORY_FAIL,
   USER_HISTORY_REQUEST,
   USER_HISTORY_SUCCESS,
@@ -108,6 +111,16 @@ export const userHistory = () => async (dispatch, getState) => {
     dispatch({ type: USER_HISTORY_SUCCESS, payload: Object.entries(group) });
   } catch (error) {
     dispatch({ type: USER_HISTORY_FAIL, payload: error.response ? error.response.data.error : error.message });
+  }
+};
+
+export const userForgot = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_FORGOT_PASS_REQUEST });
+    const result = await axios.get(`${process.env.REACT_APP_API}/user/forgot-password/${email}`);
+    dispatch({ type: USER_FORGOT_PASS_SUCCESS, payload: result.data.message });
+  } catch (error) {
+    dispatch({ type: USER_FORGOT_PASS_FAIL, payload: error.response ? error.response.data.error : error.message });
   }
 };
 

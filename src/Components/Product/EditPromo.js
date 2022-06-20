@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
+import Loading from "../SubComponent/Loading";
 import Message from "../SubComponent/Message";
 
 const EditPromo = () => {
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
   const [file, setFile] = useState("");
   const [fileUrl, setFileUrl] = useState(null);
   const [discount, setDiscount] = useState("");
@@ -28,6 +30,7 @@ const EditPromo = () => {
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       try {
         const result = await axios.get(`${process.env.REACT_APP_API}/promo`);
         const { data } = result.data;
@@ -56,17 +59,22 @@ const EditPromo = () => {
           const year = date.getFullYear();
           newData = { ...data[0], day, month, year };
         }
+        setLoading(false);
         setPromo(newData);
       } catch (err) {
+        setLoading(false);
         setError(err.respose ? err.response.data.error : err.message);
       }
     })();
 
     (async () => {
+      setLoading(true);
       try {
         const result = await axios.get(`${process.env.REACT_APP_API}/product`);
+        setLoading(false);
         setProduct(result.data.data);
       } catch (err) {
+        setLoading(false);
         setError(err.response ? err.response.data.error : err.message);
       }
     })();
@@ -101,6 +109,7 @@ const EditPromo = () => {
   };
 
   const saveChange = () => {
+    setLoading(true);
     const body = {
       discount,
       expired_date: expired_date.replaceAll("-", "/"),
@@ -118,19 +127,23 @@ const EditPromo = () => {
     axios
       .patch(`${process.env.REACT_APP_API}/promo/${promo.id}`, formData, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } })
       .then((result) => {
+        setLoading(false);
         setMessage(result.data.message);
         setShowMessage(true);
       })
-      .catch((err) => setError(err.response ? err.response.data.error : err.message));
+      .catch((err) => {
+        setLoading(false);
+        setError(err.response ? err.response.data.error : err.message);
+      });
   };
   return (
     <>
+      {loading ? <Loading show={true} /> : <></>}
       <Message
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
-          window.location.reload();
-          window.scrollTo({ behavior: "smooth", top: "0px" });
+          navigate("/product", { replace: true });
         }}
         message={message}
         error={error}

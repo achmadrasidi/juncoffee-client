@@ -4,12 +4,14 @@ import { ArrowDown, ArrowUp } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import Loading from "../Components/SubComponent/Loading";
 import Message from "../Components/SubComponent/Message";
 import { groupByTransaction } from "../helper/groupByTransaction";
 
 const Order = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [showMessage, setShowMessage] = useState(null);
   const [start, setStart] = useState(0);
@@ -18,11 +20,14 @@ const Order = () => {
   useEffect(() => {
     document.title = "Juncoffee - Orders";
     (async () => {
+      setLoading(true);
       try {
         const result = await axios.get(`${process.env.REACT_APP_API}/transaction`, { headers: { Authorization: `Bearer ${token}` } });
         const group = groupByTransaction(result.data.data, "transaction_id");
+        setLoading(false);
         setData(Object.entries(group));
       } catch (err) {
+        setLoading(false);
         setError(err.response ? err.response.data.error : err.message);
       }
     })();
@@ -31,13 +36,16 @@ const Order = () => {
   const dataId = data.map((item) => item[1].find((val) => val.transaction_id === item[0]).transaction_id).slice(start, end);
 
   const updateOrder = () => {
+    setLoading(true);
     axios
       .patch(`${process.env.REACT_APP_API}/transaction/${dataId[0]}`, { data: null }, { headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
+        setLoading(false);
         setShowMessage(true);
         setMessage(result.data.message);
       })
       .catch((e) => {
+        setLoading(false);
         setShowMessage(true);
         setError(e.response ? e.response.data.error : e.message);
       });
@@ -45,6 +53,7 @@ const Order = () => {
 
   return (
     <>
+      {loading ? <Loading show={true} /> : <></>}
       <Message
         show={showMessage}
         message={message}

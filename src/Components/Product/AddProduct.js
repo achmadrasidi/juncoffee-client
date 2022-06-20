@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
 import Message from "../SubComponent/Message";
+import Loading from "../SubComponent/Loading";
 import { AddProdPrompt } from "../SubComponent/Prompt";
 
 const AddProduct = () => {
@@ -20,6 +21,7 @@ const AddProduct = () => {
   const [price, setPrice] = useState(null);
   const [description, setDesc] = useState("");
   const [stock, setStock] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState(null);
   const navigate = useNavigate();
 
@@ -57,6 +59,7 @@ const AddProduct = () => {
   };
 
   const saveProduct = () => {
+    setLoading(true);
     const body = {
       name,
       price,
@@ -72,11 +75,13 @@ const AddProduct = () => {
     axios
       .post(`${process.env.REACT_APP_API}/product`, formData, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } })
       .then((result) => {
+        setLoading(false);
         setMessage(result.data.message);
         setId(result.data.data.id);
         setShowPrompt(true);
       })
       .catch((err) => {
+        setLoading(false);
         setError(err.response ? err.response.data.error : err.message);
         setShowMessage(true);
       });
@@ -84,7 +89,16 @@ const AddProduct = () => {
 
   return (
     <>
-      <AddProdPrompt show={showPrompt} message={message} confirm={() => setShowPrompt(false)} cancel={() => navigate(`/product/${id}`)} />
+      {loading ? <Loading show={true} /> : <></>}
+      <AddProdPrompt
+        show={showPrompt}
+        message={message}
+        confirm={() => {
+          window.location.reload();
+          setShowPrompt(false);
+        }}
+        cancel={() => navigate(`/product/${id}`)}
+      />
       <Message
         show={showMessage}
         onHide={() => {

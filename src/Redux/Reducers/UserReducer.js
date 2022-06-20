@@ -5,6 +5,9 @@ import {
   USER_CONFIRMATION_FAIL,
   USER_CONFIRMATION_REQUEST,
   USER_CONFIRMATION_SUCCESS,
+  USER_FORGOT_PASS_FAIL,
+  USER_FORGOT_PASS_REQUEST,
+  USER_FORGOT_PASS_SUCCESS,
   USER_HISTORY_FAIL,
   USER_HISTORY_REQUEST,
   USER_HISTORY_SUCCESS,
@@ -120,6 +123,21 @@ export const userHistoryReducer = (state = { data: [] }, action) => {
       return { ...state, loading: false, data: action.payload };
     case USER_HISTORY_FAIL:
       return { ...state, loading: false, err: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userForgotReducer = (state = { success: "" }, action) => {
+  switch (action.type) {
+    case USER_FORGOT_PASS_REQUEST:
+      return { ...state, loading: true, err: null };
+    case USER_FORGOT_PASS_SUCCESS:
+      return { ...state, loading: false, success: action.payload, err: null };
+    case USER_FORGOT_PASS_FAIL:
+      return { ...state, loading: false, err: action.payload, success: "" };
+    case RESET_STATE:
+      return { ...state, loading: false, err: null, success: "" };
     default:
       return state;
   }

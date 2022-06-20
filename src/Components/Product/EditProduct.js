@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
+import Loading from "../SubComponent/Loading";
 import Message from "../SubComponent/Message";
 
 const EditProduct = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
   const [message, setMessage] = useState(null);
@@ -25,6 +27,8 @@ const EditProduct = () => {
   const { token } = useSelector((state) => state.persist.userInfo.info);
   useEffect(() => {
     (async () => {
+      setLoading(true);
+      window.scrollTo({ behavior: "smooth", top: "0px" });
       try {
         const result = await axios.get(`${process.env.REACT_APP_API}/product/detail/${id}`);
         const { data } = result.data;
@@ -42,9 +46,10 @@ const EditProduct = () => {
           default:
             break;
         }
-
+        setLoading(false);
         setProduct(data);
       } catch (err) {
+        setLoading(false);
         setError(err.respose ? err.response.data.error : err.message);
       }
     })();
@@ -79,6 +84,7 @@ const EditProduct = () => {
   };
 
   const updateHandler = () => {
+    setLoading(true);
     const body = {
       name,
       price: price ? price : product.price.toString(),
@@ -90,16 +96,19 @@ const EditProduct = () => {
     axios
       .patch(`${process.env.REACT_APP_API}/product/${id}`, body, { headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
+        setLoading(false);
         setMessage(result.data.message);
         setShowMessage(true);
       })
       .catch((er) => {
+        setLoading(false);
         setError(er.response ? er.response.data.error : er.message);
         setShowMessage(true);
       });
   };
   return (
     <>
+      {loading ? <Loading show={true} /> : <></>}
       <Header />
       <Message
         show={showMessage}

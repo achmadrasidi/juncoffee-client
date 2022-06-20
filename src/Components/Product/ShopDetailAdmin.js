@@ -9,6 +9,7 @@ import axios from "axios";
 const ShopDetailAdmin = () => {
   const { loading, err, product } = useSelector((state) => state.productDetail);
   const [error, setError] = useState(null);
+  const [load, setLoad] = useState(false);
   const [show, setShow] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [message, setMessage] = useState(null);
@@ -32,13 +33,16 @@ const ShopDetailAdmin = () => {
 
   const deleteConfirm = () => {
     setShowPrompt(false);
+    setLoad(true);
     axios
       .delete(`${process.env.REACT_APP_API}/product/${product.id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
+        setLoad(false);
         setShow(true);
         setMessage(result.data.message);
       })
       .catch((er) => {
+        setLoad(false);
         setShow(true);
         setError(er.response ? er.response.data.error : er.message);
       });
@@ -56,7 +60,7 @@ const ShopDetailAdmin = () => {
         message={message}
       />
       <Prompt show={showPrompt} message={"Are you sure delete this product ?"} confirm={deleteConfirm} cancel={() => setShowPrompt(false)} />
-      {loading ? (
+      {loading || load ? (
         <Loading show={true} onHide={false} />
       ) : (
         <section className="detail-product">

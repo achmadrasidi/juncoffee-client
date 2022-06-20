@@ -6,10 +6,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import bgForgot from "../../assets/img/nani-williams-6PpLqUlCA0s-unsplash.jpg";
 import Footer from "../../Components/Footer";
 import Message from "../../Components/SubComponent/Message";
+import { userForgot } from "../../Redux/Actions/UserAction";
+import Loading from "../../Components/SubComponent/Loading";
+import { useDispatch, useSelector } from "react-redux";
 
 const ForgotPass = () => {
   const [emails, setEmails] = useState("");
   const [message, setMessage] = useState("");
+  const [load, setLoad] = useState(false);
+  const [errorPass, setErrorPass] = useState("");
   const [error, setError] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showEditPass, setShowEditPass] = useState(false);
@@ -19,50 +24,58 @@ const ForgotPass = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { email } = useParams();
+  const { success, err, loading } = useSelector((state) => state.userForgot);
 
   useEffect(() => {
+    document.title = "Juncoffee - Forgot Password";
     if (email) {
       setShowEditPass(true);
     }
-  }, [email]);
+    if (success) {
+      setMessage(success);
+      setShowMessage(true);
+    }
+    if (error) {
+      setShowMessage(true);
+    }
+  }, [email, success, error]);
 
   const sendEmailHandler = () => {
-    axios
-      .get(`${process.env.REACT_APP_API}/user/forgot-password/${emails}`)
-      .then((result) => {
-        setMessage(result.data.message);
-        setShowMessage(true);
-      })
-      .catch((err) => setError(err.response ? err.response.data.error : err.message));
+    dispatch(userForgot(emails));
   };
 
   const changePassHandler = (e) => {
     e.preventDefault();
     const body = { newPassword, email };
     if (!newPassword || !confirmPassword) {
-      setError("Password cannot be empty");
+      setErrorPass("Password cannot be empty");
       return;
     }
     if (newPassword !== confirmPassword) {
-      setError("Password not match");
+      setErrorPass("Password not match");
       return;
     }
+    setLoad(true);
+    setShowEditPass(false);
     axios
       .patch(`${process.env.REACT_APP_API}/user/forgot-password`, body)
       .then((result) => {
+        setLoad(false);
         setMessage(result.data.message);
-        setShowEditPass(false);
         setShowMessage(true);
       })
-      .catch((err) => {
-        setError(err.response ? err.response.data.error : err.message);
+      .catch((errr) => {
+        setLoad(false);
+        setError(errr.response ? errr.response.data.error : errr.message);
         setShowMessage(true);
       });
   };
 
   return (
     <>
+      {loading || load ? <Loading show={true} onHide={false} /> : <></>}
       <Message
         show={showMessage}
         onHide={() => {
@@ -71,7 +84,7 @@ const ForgotPass = () => {
           navigate("/auth/login", { replace: true });
         }}
         message={message}
-        error={error}
+        error={error || err}
       />
       <Modal show={showEditPass} onHide={() => setShowEditPass(false)} backdrop="static" keyboard={true}>
         <Modal.Header>
@@ -83,7 +96,7 @@ const ForgotPass = () => {
               className="user-contact-text"
               name="password"
               onChange={(e) => {
-                setError(null);
+                setErrorPass(null);
                 setNewPassword(e.target.value);
               }}
             ></input>
@@ -94,12 +107,12 @@ const ForgotPass = () => {
               className="user-contact-text"
               name="password"
               onChange={(e) => {
-                setError(null);
+                setErrorPass(null);
                 setConfirmPassword(e.target.value);
               }}
             ></input>
             <span>{showConPassword ? <EyeSlash size={30} className="eye-icon-prof" onClick={() => setShowConPassword(false)}></EyeSlash> : <Eye size={30} className="eye-icon-prof" onClick={() => setShowConPassword(true)}></Eye>}</span>
-            {error ? <p className="text-danger fw-bold fs-6">{error}</p> : <></>}
+            {errorPass ? <p className="text-danger fw-bold fs-6">{errorPass}</p> : <></>}
           </Modal.Body>
         </Modal.Header>
         <Modal.Footer>

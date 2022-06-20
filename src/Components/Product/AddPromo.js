@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
+import Loading from "../SubComponent/Loading";
 import Message from "../SubComponent/Message";
 
 const AddPromo = () => {
@@ -15,6 +16,7 @@ const AddPromo = () => {
   const [expired_date, setExpDate] = useState("");
   const [coupon_code, setCouponCode] = useState("");
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
   const [description, setDesc] = useState("");
   const [category, setCategory] = useState("");
   const [product, setProduct] = useState([]);
@@ -64,6 +66,7 @@ const AddPromo = () => {
     reader.readAsDataURL(files);
   };
   const saveChange = () => {
+    setLoading(true);
     const body = {
       discount,
       expired_date: expired_date.replaceAll("-", "/"),
@@ -78,16 +81,22 @@ const AddPromo = () => {
     for (const key in body) {
       formData.append(key, body[key]);
     }
+
     axios
       .post(`${process.env.REACT_APP_API}/promo`, formData, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" } })
       .then((result) => {
+        setLoading(false);
         setMessage(result.data.message);
         setShowMessage(true);
       })
-      .catch((err) => setError(err.response ? err.response.data.error : err.message));
+      .catch((err) => {
+        setLoading(false);
+        setError(err.response ? err.response.data.error : err.message);
+      });
   };
   return (
     <>
+      {loading ? <Loading show={true} /> : <></>}
       <Message
         show={showMessage}
         onHide={() => {

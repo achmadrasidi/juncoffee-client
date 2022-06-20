@@ -1,4 +1,4 @@
-import { userConfirmReducer, userHistoryReducer, userInfoReducer, userLoginReducer, userLogoutReducer, userPaymentReducer, userRegisterReducer } from "./Reducers/UserReducer";
+import { userConfirmReducer, userForgotReducer, userHistoryReducer, userInfoReducer, userLoginReducer, userLogoutReducer, userPaymentReducer, userRegisterReducer } from "./Reducers/UserReducer";
 import { combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { configureStore } from "@reduxjs/toolkit";
@@ -45,6 +45,7 @@ export const store = configureStore({
     deleteHistory: deleteHistoryReducer,
     deleteAllHistory: deleteAllHistoryReducer,
     userHistory: userHistoryReducer,
+    userForgot: userForgotReducer,
   },
   middleware,
   devTools: true,
