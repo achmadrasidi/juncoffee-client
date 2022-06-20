@@ -58,8 +58,7 @@ const Login = () => {
         setMessage(state.message);
         return;
       }
-      window.history.replaceState({ ...state.message }, "");
-      window.history.replaceState({ ...state.token }, "");
+      window.history.replaceState({ ...state }, "");
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
 
