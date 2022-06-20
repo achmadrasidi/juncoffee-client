@@ -58,7 +58,6 @@ const Login = () => {
         setMessage(state.message);
         return;
       }
-      window.history.replaceState({ ...state.message }, "");
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
 
@@ -67,7 +66,6 @@ const Login = () => {
       dispatch(userConfirm(state.token));
       return;
     }
-    window.history.replaceState({ ...state.token }, "");
   }
 
   if (isLoggedIn) {
@@ -96,7 +94,12 @@ const Login = () => {
         show={showMessage}
         onHide={() => {
           setShowMessage(false);
-          window.history.replaceState({ ...state.message }, "");
+          if (state) {
+            window.history.replaceState({ ...state.message }, "");
+            window.history.replaceState({ ...state.token }, "");
+            delete state.message;
+            delete state.token;
+          }
         }}
         message={message}
         error={errorMsg}

@@ -38,7 +38,6 @@ const Cart = () => {
       if (state.token) {
         dispatch(userPayment(state.token));
       }
-      window.history.replaceState({ ...state.token }, "");
     }
   }, [errorMessage, modalMessage, message]);
 
@@ -46,7 +45,18 @@ const Cart = () => {
     <>
       <Header />
       {loading ? <Loading show={true} onHide={false} /> : <></>}
-      <Message show={show} onHide={() => setShow(false)} message={modalMessage} error={errorMessage} />
+      <Message
+        show={show}
+        onHide={() => {
+          setShow(false);
+          if (state) {
+            window.history.replaceState({ ...state.token }, "");
+            delete state.token;
+          }
+        }}
+        message={modalMessage}
+        error={errorMessage}
+      />
       <CartSection />
       <Footer />
     </>
