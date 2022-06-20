@@ -67,6 +67,7 @@ const Login = () => {
       dispatch(userConfirm(state.token));
       return;
     }
+    window.history.replaceState({ ...state.token }, "");
   }
 
   if (isLoggedIn) {
