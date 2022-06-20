@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeKeyword } from "../../Redux/Actions/SearchActions";
 
@@ -7,6 +8,8 @@ import Items from "./Sub/Items";
 const Shop = () => {
   const [favorite, setFavorite] = useState(false);
   const [category, setCategory] = useState(null);
+  const [promo, setPromo] = useState({});
+  const [error, setError] = useState(null);
   const [pageUrl, setPageUrl] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
