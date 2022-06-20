@@ -58,15 +58,12 @@ const Login = () => {
         setMessage(state.message);
         return;
       }
+      if (state.token) {
+        dispatch(userConfirm(state.token));
+        return;
+      }
     }
   }, [confirmMessage, logoutMessage, errorLogin, errorConfirm]);
-
-  if (state) {
-    if (state.token) {
-      dispatch(userConfirm(state.token));
-      return;
-    }
-  }
 
   if (isLoggedIn) {
     navigate("/", { replace: true });

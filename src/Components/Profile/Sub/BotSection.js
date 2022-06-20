@@ -19,11 +19,6 @@ const BotSection = ({ handleInputChange, setInputValue, error, setError, updateH
       if (data.gender) {
         setGen(data.gender);
       }
-      if (data.date_of_birth) {
-        setInputValue((inputValue) => {
-          return { ...inputValue, date_of_birth: data.date_of_birth.replaceAll("/", "-") };
-        });
-      }
     }
   }, [data]);
 
@@ -79,7 +74,7 @@ const BotSection = ({ handleInputChange, setInputValue, error, setError, updateH
                       const year = e.target.value.split("-")[0];
                       setDateValue(e.target.value);
                       setInputValue((inputValue) => {
-                        return { ...inputValue, date_of_birth: `${day}/${month}/${year}` };
+                        return { ...inputValue, date_of_birth: `${year}/${month}/${day}` };
                       });
                     }}
                   />

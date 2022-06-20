@@ -24,6 +24,7 @@ const ShopAdmin = () => {
         setError(err.respose ? err.response.data.error : err.message);
       }
     })();
+    window.scrollTo({ behavior: "smooth", top: "0px" });
   }, []);
 
   return (
