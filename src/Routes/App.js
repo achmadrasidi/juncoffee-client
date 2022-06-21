@@ -10,6 +10,7 @@ import Login from "../Pages/Auth/Login";
 import Logout from "../Pages/Auth/Logout";
 import Payment from "../Pages/Auth/Payment";
 import Register from "../Pages/Auth/Register";
+import NotFound from "../Pages/Auth/NotFound";
 import Cart from "../Pages/Cart";
 import Dashboard from "../Pages/Dashboard";
 import History from "../Pages/History";
@@ -133,6 +134,7 @@ const App = () => {
           <Route path=":email" element={<ForgotPass />} />
         </Route>
         <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

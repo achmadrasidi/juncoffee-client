@@ -2866,3 +2866,18 @@ input[name="delete"] {
 
   color: white;
 }
+.notfound {
+  margin-top: 15%;
+}
+.page-title-not-found {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 30px;
+  /* identical to box height */
+  margin-bottom: 5%;
+  text-align: center;
+
+  color: #6a4029;
+}
