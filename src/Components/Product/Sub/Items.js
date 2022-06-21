@@ -9,7 +9,7 @@ import Pagination from "./Pagination";
 
 const Items = ({ category, favorite, pageUrl, setPageUrl }) => {
   const [sortValue, setSortValue] = useState("");
-  const [order, setOrder] = useState("Order by");
+  const [order, setOrder] = useState("Sort by");
   const [_, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
@@ -37,10 +37,10 @@ const Items = ({ category, favorite, pageUrl, setPageUrl }) => {
 
   switch (sortValue) {
     case "asc":
-      baseUrl += `order=asc&sort=${order === "Order by" ? "name" : order.toLowerCase()}&`;
+      baseUrl += `order=asc&sort=${order === "Sort by" ? "name" : order.toLowerCase()}&`;
       break;
     case "desc":
-      baseUrl += `order=desc&sort=${order === "Order by" ? "name" : order.toLowerCase()}&`;
+      baseUrl += `order=desc&sort=${order === "Sort by" ? "name" : order.toLowerCase()}&`;
       break;
     default:
       break;
