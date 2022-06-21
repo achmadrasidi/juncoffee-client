@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import NotFound from "../../Pages/Auth/NotFound";
 import Footer from "../Footer";
 import Header from "../Header";
 import Loading from "../SubComponent/Loading";
@@ -10,7 +11,7 @@ import Message from "../SubComponent/Message";
 
 const EditProduct = () => {
   const navigate = useNavigate();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
@@ -25,6 +26,7 @@ const EditProduct = () => {
   const { id } = useParams();
 
   const { token } = useSelector((state) => state.persist.userInfo.info);
+
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -119,11 +121,10 @@ const EditProduct = () => {
         message={message}
         error={error}
       />
-      {error ? (
-        <p>{error}</p>
+      {!product ? (
+        <NotFound />
       ) : (
         <>
-          {" "}
           <section className="detail-product">
             <div className="container-fluid">
               <div className="row my-5 row-content">

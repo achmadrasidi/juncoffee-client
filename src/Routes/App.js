@@ -69,7 +69,6 @@ const App = () => {
               </PrivateRoutes>
             }
           />
-
           <Route
             path="edit-promo/:id"
             element={

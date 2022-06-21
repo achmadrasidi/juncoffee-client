@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Message from "../SubComponent/Message";
 import Prompt from "../SubComponent/Prompt";
 import axios from "axios";
+import NotFound from "../../Pages/Auth/NotFound";
 
 const ShopDetailAdmin = () => {
   const { loading, err, product } = useSelector((state) => state.productDetail);
@@ -62,6 +63,8 @@ const ShopDetailAdmin = () => {
       <Prompt show={showPrompt} message={"Are you sure delete this product ?"} confirm={deleteConfirm} cancel={() => setShowPrompt(false)} />
       {loading || load ? (
         <Loading show={true} onHide={false} />
+      ) : !product.length ? (
+        <NotFound />
       ) : (
         <section className="detail-product">
           <div className="container-fluid">
