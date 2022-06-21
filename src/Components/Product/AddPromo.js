@@ -150,10 +150,6 @@ const AddPromo = () => {
                 <h2 className=" text-start label-add-prod add-prod-top">Enter the discount (%):</h2>
                 <input type="text" required className="mt-3 w-100" placeholder="Input discount" onChange={(e) => setDiscount(e.target.value)} />
                 <h2 className=" text-start label-add-prod add-prod-top">Expired date:</h2>
-                <p class="product-size-add mt-2 border-0">Select start date</p>
-                <input type="date" required className=" w-100" />
-                <br />
-                <p class="product-size-add border-0 mt-3">Select end date</p>
                 <input type="date" required className=" w-100" onChange={(e) => setExpDate(e.target.value)} />
                 <h2 className=" text-start label-add-prod add-prod-top">Coupon code:</h2>
                 <input type="text" required className="mt-3 w-100" placeholder="Input coupon code" onChange={(e) => setCouponCode(e.target.value)} />
@@ -207,7 +203,7 @@ const AddPromo = () => {
                 >
                   Foods
                 </button>
-                <div className="row mt-5 p-0">
+                <div className="row mt-3 p-0">
                   <div className="col-md-12  ">
                     <button className=" cart-button-promo">Save Promo</button>
                   </div>

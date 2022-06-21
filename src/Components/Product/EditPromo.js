@@ -197,13 +197,11 @@ const EditPromo = () => {
               </div>
               <div class="row mt-5 pt-5">
                 <h2 className=" text-start label-add-prod add-prod-top">Expired date:</h2>
-                <p class="product-size-add mt-2 border-0">Select start date</p>
-                <input type="date" className=" w-100" />
-                <br />
-                <p class="product-size-add border-0 mt-3">Select end date</p>
-                <input type="date" className=" w-100" value={expired_date ? expired_date : `${promo && promo.year}-${promo && promo.month}-${promo && promo.day}`} onChange={(e) => setExpDate(e.target.value)} />
+                <input type="date" className=" w-100 mt-3" value={expired_date ? expired_date : `${promo && promo.year}-${promo && promo.month}-${promo && promo.day}`} onChange={(e) => setExpDate(e.target.value)} />
                 <h2 className=" text-start label-add-prod add-prod-top-edit">Input Promo code:</h2>
                 <input type="text" className="mt-3 w-100" placeholder="Input coupon code" defaultValue={promo.coupon_code} onChange={(e) => setCouponCode(e.target.value)} />
+                <h2 className=" text-start label-add-prod mt-4">Enter the discount (%):</h2>
+                <input type="text" defaultValue={promo.discount} className="mt-3 w-100" placeholder="Input discount" onChange={(e) => setDiscount(e.target.value)} />
               </div>
             </div>
             <div className="col-md-6 mt-5">
@@ -251,11 +249,10 @@ const EditPromo = () => {
               >
                 Foods
               </button>
-              <h2 className=" text-start label-add-prod mt-5">Enter the discount (%):</h2>
-              <input type="text" defaultValue={promo.discount} className="mt-3 w-100" placeholder="Input discount" onChange={(e) => setDiscount(e.target.value)} />
-              <div className="row  p-0">
+
+              <div className="row mt-5 p-0">
                 <div className="col-md-12  ">
-                  <button className=" cart-button-promo-edit" onClick={saveChange}>
+                  <button className=" cart-button-promo-edit " onClick={saveChange}>
                     Save Promo
                   </button>
                 </div>

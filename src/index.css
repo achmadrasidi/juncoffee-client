@@ -1490,7 +1490,7 @@ input.user-contact-text-top:focus {
   margin-top: 8%;
 }
 .add-prod-top-edit {
-  margin-top: 15%;
+  margin-top: 5%;
 }
 .modal-loading {
   background-color: none;
@@ -2338,7 +2338,7 @@ input[name="delete"] {
   height: 85px;
   width: 100%;
   border: none;
-  margin-top: 15%;
+  margin-top: 5%;
 
   font-family: "Poppins";
   font-style: normal;
