@@ -3,7 +3,7 @@
   <h1 align='center'>Juncoffee Shop</h1>
 </p>
   <p align="center">
-    <a href="https://juncoffee.netlify.app/">View Application Demo</a>
+    <a href="https://juncoffee.netlify.app/">View Live Application</a>
     ·
     <a href="https://github.com/achmadrasidi/juncoffee/issues">Report Bug</a>
     ·
