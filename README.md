@@ -3,7 +3,7 @@
   <h1 align='center'>Juncoffee Shop</h1>
 </p>
   <p align="center">
-    <a href="https://juncoffee.netlify.app/">View Static Demo</a>
+    <a href="https://juncoffee.netlify.app/">View Application Demo</a>
     ·
     <a href="https://github.com/achmadrasidi/juncoffee/issues">Report Bug</a>
     ·
@@ -53,64 +53,33 @@ Juncoffee is a store that sells some good meals, and especially coffee. We provi
 
 ## Getting Started
 
-1. Download this Project or you can type `https://github.com/achmadrasidi/juncoffee.git`
+1. Download this Project or you can type `https://github.com/achmadrasidi/juncoffee-client.git`
 
 ```sh
-git clone https://github.com/achmadrasidi/juncoffee.git
+git clone https://github.com/achmadrasidi/juncoffee-client.git
 ```
 
-2. Go to _server_ directory
-
-```sh
-cd server
-```
-
-3. Install NPM packages
+2. Install NPM packages
 
 ```sh
 npm install
 ```
 
-4. Add .env file at root folder project, and add following
+3. Add .env file at root folder project, and add following
 
 ```sh
-PORT
-DB_USER
-DB_HOST
-DB_DATABASE
-DB_PASS
-JWT_SECRET_KEY
-JWT_ISSUER
+REACT_APP_API
 ```
 
-5. Starting server
-
-```sh
-npm run startDev
-```
-
-6. Go to _frontend_ directory
-
-```sh
-cd ..
-cd frontend
-```
-
-7. Install NPM packages
-
-```sh
-npm install
-```
-
-8. Starting client
+5. Starting client
 
 ```sh
 npm start
 ```
 
-9. Juncoffee App is Running
+6. Juncoffee Client App is Running
 
 ## Related Project
 
-- [`Frontend-juncoffee`](https://github.com/achmadrasidi/juncoffee/tree/main/frontend)
-- [`Backend-juncoffee`](https://github.com/achmadrasidi/juncoffee/tree/main/server)
+- [`Frontend-juncoffee`](https://github.com/achmadrasidi/juncoffee-client)
+- [`Backend-juncoffee`](https://github.com/achmadrasidi/juncoffee-server)
