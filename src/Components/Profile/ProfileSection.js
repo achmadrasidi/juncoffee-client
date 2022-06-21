@@ -57,6 +57,10 @@ const ProfileSection = () => {
       setError({ ...error, file: "Invalid image type (png,jpg,jpeg)" });
       return;
     }
+    if (files.size > 2e6) {
+      setError({ ...error, file: "Invalid image size (Max 2Mb)" });
+      return;
+    }
     reader.readAsDataURL(files);
   };
 
