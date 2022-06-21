@@ -147,7 +147,7 @@ const AddPromo = () => {
                   </label>
                 </button>
 
-                <h2 className=" text-start label-add-prod add-prod-top">Enter the discount:</h2>
+                <h2 className=" text-start label-add-prod add-prod-top">Enter the discount (%):</h2>
                 <input type="text" required className="mt-3 w-100" placeholder="Input discount" onChange={(e) => setDiscount(e.target.value)} />
                 <h2 className=" text-start label-add-prod add-prod-top">Expired date:</h2>
                 <p class="product-size-add mt-2 border-0">Select start date</p>

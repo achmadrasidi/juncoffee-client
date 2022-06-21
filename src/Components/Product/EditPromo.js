@@ -251,7 +251,7 @@ const EditPromo = () => {
               >
                 Foods
               </button>
-              <h2 className=" text-start label-add-prod mt-5">Enter the discount:</h2>
+              <h2 className=" text-start label-add-prod mt-5">Enter the discount (%):</h2>
               <input type="text" defaultValue={promo.discount} className="mt-3 w-100" placeholder="Input discount" onChange={(e) => setDiscount(e.target.value)} />
               <div className="row  p-0">
                 <div className="col-md-12  ">
