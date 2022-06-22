@@ -29,40 +29,32 @@ Juncoffee is a store that sells some good meals, and especially coffee. We provi
 
 ## Built With
 
-[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
-[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
-[![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-<br>
-
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 [![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 
-## Requirements
+## Features
 
-1. Layout,color, typography
-2. Login
-3. Register
-4. Logout
-5. Form Validation
-6. CRUD Search Sort Pagination
-7. Responsive
-8. Navigation handling
-9. Backend API Documentation [`here`](https://documenter.getpostman.com/view/20709109/UyrDEbj2)
+1. Layouting and styling
+2. Authentication system Login,Register,Logout
+3. Form input Validation
+4. Searching and Sorting with Pagination
+5. Responsive Design
+6. Page Navigation Handling
 
 ## Getting Started
 
 1. Download this Project or you can type `https://github.com/achmadrasidi/juncoffee-client.git`
 
 ```sh
-git clone https://github.com/achmadrasidi/juncoffee-client.git
+$ git clone https://github.com/achmadrasidi/juncoffee-client.git
 ```
 
 2. Install NPM packages
 
 ```sh
-npm install
+$ npm install
 ```
 
 3. Add .env file at root folder project, and add following
@@ -74,7 +66,7 @@ REACT_APP_API
 5. Starting client
 
 ```sh
-npm start
+$ npm start
 ```
 
 6. Juncoffee Client App is Running
@@ -83,3 +75,4 @@ npm start
 
 - [`Frontend-juncoffee`](https://github.com/achmadrasidi/juncoffee-client)
 - [`Backend-juncoffee`](https://github.com/achmadrasidi/juncoffee-server)
+- Backend API Documentation [`here`](https://documenter.getpostman.com/view/20709109/UyrDEbj2)
