@@ -45,7 +45,7 @@ const Shop = () => {
                       <div className="card card-product-promo-layout" id="card-product-promo-res">
                         <div className="card-body">
                           <div className="row justify-content-center">
-                            <img src={promo.image ? promo.image : require("../../assets/img/promo-product-image.png")} className="promo-food-img " alt="" />
+                            <img src={require("../../assets/img/promo-product-image.png")} className="promo-food-img " alt="" />
                             <h2 className="product-promo-card-title">{promo.name}</h2>
                             <p className="product-promo-card-desc mt-2">{promo.description}</p>
                           </div>
