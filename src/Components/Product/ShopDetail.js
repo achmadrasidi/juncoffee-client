@@ -33,7 +33,7 @@ const ShopDetail = () => {
     default:
       prodPrice = product.price;
   }
-
+  const products = Object.keys(product);
   useEffect(() => {
     setError(null);
     setSize(null);
@@ -69,7 +69,7 @@ const ShopDetail = () => {
 
       {loading ? (
         <Loading show={true} onHide={false} />
-      ) : !product.length ? (
+      ) : !products.length ? (
         <NotFound />
       ) : (
         <section className="detail-product">

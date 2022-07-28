@@ -36,10 +36,10 @@ export const productListReducer = (state = { list: { data: [], meta: {} } }, act
   }
 };
 
-export const productDetailReducer = (state = { product: [] }, action) => {
+export const productDetailReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case PRODUCT_DETAIL_REQUEST:
-      return { ...state, loading: true, product: [] };
+      return { ...state, loading: true, product: {} };
     case PRODUCT_DETAIL_SUCCESS:
       return { ...state, loading: false, product: action.payload };
     case PRODUCT_DETAIL_FAIL:
